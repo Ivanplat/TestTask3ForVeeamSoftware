@@ -13,7 +13,7 @@ void SecondTest::Prepare()
     MEMORYSTATUSEX statex; // Create MEMORYSTATUSEX varialbe
     statex.dwLength = sizeof(statex); // Define the size of statex
     GlobalMemoryStatusEx(&statex); //Get RAM status
-    PrintToBoth(LOK, "There are" + std::to_string(statex.ullTotalPhys) + " total KB of physical memory"); // Print to log
+    PrintToBoth(LOK, "There are " + std::to_string(statex.ullTotalPhys) + " total KB of physical memory"); // Print to log
     if (statex.ullTotalPhys < 1048576) // Check is that egnouth RAM to complete the test
     {
         PrintToBoth(LERR, "There are not enough memory to run the test!"); //Print error to log
@@ -50,7 +50,7 @@ void SecondTest::CleanUp()
 void SecondTest::FillTheFileWithRandomContent(std::ofstream& file)
 {
     PrintToBoth(LOK, "SecondTest::FillTheFileWithRandomContent(std::ofstream& file)"); // Print to log
-    for (int i = 0; i < 1024; i++) // We need to create a file with random context with 1024kb size
+    for (int i = 0; i < 1048576; i++) // We need to create a file with random context with 1024kb size
     {
         int r = std::rand() % (127 - 32 + 1); //Get random number in range from [32;127]
         char c = static_cast<char>(r); //Make a char from this integer number
